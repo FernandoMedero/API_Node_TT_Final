@@ -70,3 +70,110 @@ Luego editar el archivo `.env` con los valores correspondientes para tu entorno.
     }
 ]
 ```
+
+
+### Crear un producto
+
+- **POST** `/products`
+- **Descripción:** Crea un nuevo producto.
+- **Body (JSON):**
+
+```json
+{
+    "categoria": [
+        "Antigripal",
+        "Venta con receta"
+    ],
+    "precio": 12000,
+    "nombre": "Ponstil pediatrico"
+}
+```
+
+- **Respuesta ejemplo:**
+
+```json
+{
+    "id": "kzDiVYLEygA1d4UXfjhv",
+    "categoria": [
+        "Antigripal",
+        "Venta con receta"
+    ],
+    "precio": 12000,
+    "nombre": "Ponstil pediatrico"
+}
+```
+
+### Actualizar un producto (PUT)
+
+- **PUT** `/products/:id`
+- **Descripción:** Actualiza un producto existente.
+- **Parámetros:**
+  - `id` (requerido): ID del producto a actualizar.
+- **Body (JSON):**
+
+```json
+{
+    "precio": 1500,
+    "categoria": [
+        "Cosmetica",
+        "Venta con receta"
+    ],
+    "nombre": "Pasta de dientes"
+}
+```
+
+- **Respuesta ejemplo:**
+
+```json
+true
+```
+- **Respuesta:** 404 Not Found
+```json
+{
+    "message": "Product not found"
+}
+```
+
+### Eliminar un producto
+
+- **DELETE** `/products/:id`
+- **Descripción:** Elimina un producto por su ID.
+- **Parámetros:**
+  - `id` (path, requerido): ID del producto a eliminar.
+- **Respuesta:** 200 OK
+{
+    "message": "Product deleted successfully"
+}
+
+## Códigos de estado
+
+- `200` - OK: Operación exitosa
+- `201` - Created: Recurso creado exitosamente
+- `204` - No Content: Recurso eliminado exitosamente
+- `400` - Bad Request: Datos de entrada inválidos
+- `404` - Not Found: Recurso no encontrado
+
+## Estructura del proyecto
+
+```
+src/
+├── Controllers/
+|   |__ authController.js
+│   └── productsController.js
+|__ Middlewares/
+|   |__ authMiddleware.js
+├── Models/
+|   |__ firebase.js
+│   └── productModel.js
+|── Routes/
+|   |__ authRouter.js
+|   └── productsRouters.js
+|__ Services
+    |__ productsService.js
+```
+
+## Tecnologías utilizadas
+
+- Node.js
+- Express.js
+- ES6 Modules

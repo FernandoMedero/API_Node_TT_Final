@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 
 const default_user = {
   id: 1,
-  email: "apinode@prueba.com",
-  password: "password",
+  email: "apinode@prueba.com.comentado",
+  password: "password.comentado",
 };
 
 export const login = async (req, res) => {

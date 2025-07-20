@@ -8,6 +8,7 @@ import {
   addDoc,
   setDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 const productsCollection = collection(db, "products");
@@ -50,6 +51,7 @@ export const createProduct = async (newProduct) => {
   }
 };
 
+/*
 export const updateProduct = async (id, updatedProductData) => {
   try {
     const docRef = doc(productsCollection, id);
@@ -60,14 +62,31 @@ export const updateProduct = async (id, updatedProductData) => {
     return null;
   }
 };
+*/
 
 export const deleteProduct = async (id) => {
   try {
     const docRef = doc(productsCollection, id);
+    if (!(await getDoc(docRef)).exists()) return false;
     await deleteDoc(docRef);
     return true;
   } catch (error) {
     console.error(error);
+    return false;
+  }
+};
+
+export const updateProduct = async (id, data) => {
+  try {
+    const docRef = doc(productsCollection, id);
+    await updateDoc(docRef, data);
+    return true;
+  } catch (error) {
+    if (error.code === 'not-found') {
+      console.warn(`No se encontró el documento con ID: ${id}`);
+    } else {
+      console.error("Error al actualizar:", error);
+    }
     return false;
   }
 };
