@@ -11,7 +11,7 @@ export const getProductById = async (req, res) => {
   if (product) {
     res.json(product);
   } else {
-    res.status(404).json({ message: "Product not found" });
+    res.status(404).json({ message: "Product no encontrado" });
   }
 };
 
@@ -30,7 +30,7 @@ export const updateProduct = async (req, res) => {
   if (updatedProduct) {
     res.json(updatedProduct);
   } else {
-    res.status(404).json({ message: "Product not found" });
+    res.status(404).json({ message: "Product no encontrado" });
   }
 };
 
@@ -38,8 +38,8 @@ export const deleteProduct = async (req, res) => {
    const { id } = req.params;
   const deletedProduct = await Service.deleteProduct(id);
   if (deletedProduct) {
-    res.json({ message: "Product deleted successfully" });
+    res.json({ message: "Producto eliminado correctamente" });
   } else {
-    res.status(404).json({ message: "Product not found" });
+    res.status(404).json({ message: "Product no encontrado" });
   }
 };
