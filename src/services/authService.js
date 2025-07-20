@@ -7,6 +7,12 @@ export const loginUser = async (email, password) => {
     return { success: false, message: "Usuario o contraseña incorrectos" };
   }
 
-  const user = snapshot.docs[0].data();
+  const doc = snapshot.docs[0];
+  const userData = doc.data();
+  const user = {
+    id: doc.id,               
+    email: userData.email
+  };
+
   return { success: true, user };
 };

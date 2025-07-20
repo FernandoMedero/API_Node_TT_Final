@@ -1,5 +1,5 @@
-import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const usersCollection = collection(db, "users");
 

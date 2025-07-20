@@ -17,16 +17,17 @@ export const login = async (req, res) => {
     if (!result.success) {
       return res.status(401).json({ message: result.message });
     }
-
-    const payload = { id: user.id };
+    
+    const { id, email: userEmail } = result.user;
+    const payload = { id };
     const expiration = { expiresIn: "1h" };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, expiration);
-    res.json({ token });
-    return res.status(200).json({ user: result.user });
+    
+    return res.status(200).json({ token, user: { id, email: userEmail } });
   } catch (error) {
     console.error("Error en loginController:", error);
-    res.status(500).json({ message: "Error interno del servidor" });
+    return res.status(500).json({ message: "Error interno del servidor" });
   }
   /*
   const user = { id: 1, email };
