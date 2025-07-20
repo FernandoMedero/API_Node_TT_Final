@@ -6,16 +6,17 @@ API REST para gestión de productos desarrollada con Node.js y Express.
 
 ## Instalación
 
-- Instalar dependencias:
-Express
-Firebase
-JWT
-
+- Instalar dependencias necesarias 
+- Node.js
+- Express.js
+- ES6 Modules
+- CORS
+- JWT
+- body-parser
 
 ```bash
 npm install
 ```
-
 
 - Configurar variables de entorno
 
@@ -70,8 +71,6 @@ Luego editar el archivo `.env` con los valores correspondientes para tu entorno.
     }
 ]
 ```
-
-
 ### Crear un producto
 
 - **POST** `/products`
@@ -162,13 +161,16 @@ src/
 │   └── productsController.js
 |__ Middlewares/
 |   |__ authMiddleware.js
+|   |__ not-found.js
 ├── Models/
+|   |__ authModel.js
 |   |__ firebase.js
 │   └── productModel.js
 |── Routes/
 |   |__ authRouter.js
 |   └── productsRouters.js
 |__ Services
+    |__ authService.js
     |__ productsService.js
 ```
 
@@ -177,3 +179,6 @@ src/
 - Node.js
 - Express.js
 - ES6 Modules
+- CORS
+- JWT
+- body-parser
