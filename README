@@ -1,10 +1,72 @@
-# Proyecto Final
-API REST con NODE JS
+# Proyecto Final API REST con NODE JS Proyecto Final
+
+## Descripción
+
+API REST para gestión de productos desarrollada con Node.js y Express.
 
 ## Instalación
-Se utiliza Express, Firebase y deslegado en Vercel
-Instalar las dependencia
+
+- Instalar dependencias:
 Express
 Firebase
 JWT
 
+
+```bash
+npm install
+```
+
+
+- Configurar variables de entorno
+
+```bash
+# Copiar el archivo de ejemplo y completar los datos requeridos
+cp .env-example .env
+```
+Luego editar el archivo `.env` con los valores correspondientes para tu entorno.
+
+## Documentación de la API
+
+
+### Obtener todos los productos
+
+- **GET** `/products`
+- **Descripción:** Retorna lista completa de productos.
+- **Ejemplo:**
+
+```json
+[
+    {
+        "id": "28tZtXXhNdGoyENSnxSC",
+        "categoria": [
+            "Cremas",
+            "Venta libre"
+        ],
+        "precio": 7500,
+        "nombre": "Bagovit Solar"
+    }
+]
+```
+
+### Obtener producto por ID
+
+- **GET** `/products/:id`
+- **Descripción:** Devuelve un producto específico por su ID.
+- **Parámetros:**
+  - `id` (path, requerido): ID del producto.
+- **Ejemplo de uso:** `/products/28tZtXXhNdGoyENSnxSC`
+- **Respuesta ejemplo:**
+
+```json
+[
+    {
+        "id": "28tZtXXhNdGoyENSnxSC",
+        "categoria": [
+            "Cremas",
+            "Venta libre"
+        ],
+        "precio": 7500,
+        "nombre": "Bagovit Solar"
+    }
+]
+```

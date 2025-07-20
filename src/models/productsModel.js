@@ -13,7 +13,8 @@ import {
 const productsCollection = collection(db, "products");
 
 export const getAllProducts = async () => {
-  try {
+  //return [{id:1, name:"product 1"}];
+   try {
     const snapshot = await getDocs(productsCollection);
     const products = snapshot.docs.map((doc) => ({
       id: doc.id,
@@ -23,6 +24,7 @@ export const getAllProducts = async () => {
   } catch (error) {
     console.error(error);
   }
+    
 };
 
 export const getProductById = async (id) => {
